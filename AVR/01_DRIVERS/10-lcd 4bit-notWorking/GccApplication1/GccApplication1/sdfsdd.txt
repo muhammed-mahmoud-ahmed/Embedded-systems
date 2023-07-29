@@ -1,0 +1,43 @@
+DIO_vWritePinValue(LCD_RS_PORT, LCD_RS_PIN, 1); // RS data select
+	_delay_ms(1);
+	DIO_vWritePinValue(LCD_ENABLE_PORT,LCD_ENABLE_PIN,1);
+	_delay_ms(1);
+	DIO_vWritePortLowNibble(LCD_PORT, (data >> 4)); // write on port low nibble and write 4 most bits of data on data reg on lcd
+	_delay_ms(1);
+	DIO_vWritePinValue(LCD_ENABLE_PORT,LCD_ENABLE_PIN,0);
+	_delay_ms(1);
+	DIO_vWritePinValue(LCD_ENABLE_PORT,LCD_ENABLE_PIN,1);
+	_delay_ms(1);
+	// LCD_Enable_pulse();								// send enable pulse
+	DIO_vWritePinValue(LCD_RS_PORT,LCD_RS_PIN,1);
+	DIO_vWritePortLowNibble(LCD_PORT, data);		// write on port low nibble and write  4 least bits of data on data reg on lcd
+	DIO_vWritePinValue(LCD_ENABLE_PORT,LCD_ENABLE_PIN,0);
+	_delay_ms(1);
+	DIO_vWritePinValue(LCD_RS_PORT, LCD_RS_PIN, 1); // RS data select
+	// LCD_Enable_pulse;								// send enable pulse
+
+
+
+
+
+
+    void LCD_vSendChar(unsigned char data)
+{
+	DIO_vWritePinValue(LCD_RS_PORT, LCD_RS_PIN, 1); // RS data select
+	// DIO_vWritePinValue(LCD_ENABLE_PORT, LCD_ENABLE_PIN, 1);
+	// _delay_ms(1);
+	DIO_vWritePortLowNibble(LCD_PORT, (data >> 4)); // write on port low nibble and write 4 most bits of data on data reg on lcd
+	LCD_Enable_pulse();								// send enable pulse
+	// _delay_ms(2);
+	// DIO_vWritePinValue(LCD_ENABLE_PORT, LCD_ENABLE_PIN, 0);
+	// _delay_ms(1);
+
+	// DIO_vWritePinValue(LCD_ENABLE_PORT, LCD_ENABLE_PIN, 1);
+	// _delay_ms(1);
+	DIO_vWritePortLowNibble(LCD_PORT, data); // write on port low nibble and write  4 least bits of data on data reg on lcd
+	LCD_Enable_pulse();
+	// _delay_ms(2);
+	// DIO_vWritePinValue(LCD_ENABLE_PORT, LCD_ENABLE_PIN, 0);
+	// _delay_ms(1);
+	// LCD_Enable_pulse;								// send enable pulse
+}

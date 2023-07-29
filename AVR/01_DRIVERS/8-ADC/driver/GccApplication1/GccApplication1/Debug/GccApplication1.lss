@@ -1,0 +1,146 @@
+
+GccApplication1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000000a2  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  000000f6  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  000000f6  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000128  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000048  00000000  00000000  00000164  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   0000066d  00000000  00000000  000001ac  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000005a3  00000000  00000000  00000819  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000002b3  00000000  00000000  00000dbc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000058  00000000  00000000  00001070  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000355  00000000  00000000  000010c8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000054  00000000  00000000  0000141d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000028  00000000  00000000  00001471  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+   8:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+   c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  10:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  14:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  18:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  1c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  20:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  24:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  28:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  2c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  30:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  34:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  38:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  3c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  40:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  44:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  48:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  4c:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+  50:	0c 94 34 00 	jmp	0x68	; 0x68 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+  60:	0e 94 44 00 	call	0x88	; 0x88 <main>
+  64:	0c 94 4f 00 	jmp	0x9e	; 0x9e <_exit>
+
+00000068 <__bad_interrupt>:
+  68:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000006c <ADC_vIntialize>:
+#include "Common_Macros.h"
+
+// initialize ADC
+void ADC_vIntialize(void)
+{
+	SET_BIT(ADMUX, REFS0); // configure vref as avcc
+  6c:	3e 9a       	sbi	0x07, 6	; 7
+	SET_BIT(ADCSRA, ADEN); // enable adc
+  6e:	37 9a       	sbi	0x06, 7	; 6
+
+	/*by default we are getting volt on adc0*/
+	/*adjust adc clock*/
+	SET_BIT(ADCSRA, ADPS2);
+  70:	32 9a       	sbi	0x06, 2	; 6
+	SET_BIT(ADCSRA, ADPS1);
+  72:	31 9a       	sbi	0x06, 1	; 6
+  74:	08 95       	ret
+
+00000076 <ADC_u16Read>:
+// Read ADC value
+unsigned short ADC_u16Read(void)
+{
+	unsigned short value;
+
+	SET_BIT(ADCSRA, ADSC); // start conversion
+  76:	36 9a       	sbi	0x06, 6	; 6
+	while (READ_BIT(ADCSRA, ADIF) == 0); // check flag
+  78:	34 9b       	sbis	0x06, 4	; 6
+  7a:	fe cf       	rjmp	.-4      	; 0x78 <ADC_u16Read+0x2>
+	// while(READ_BIT(ADCSRA,ADSC)==1);another way to hold operation
+	SET_BIT(ADCSRA, ADIF); // clear flag
+  7c:	34 9a       	sbi	0x06, 4	; 6
+
+	/*store value*/
+	/*we are working right adjust*/
+	value = (ADCL);
+  7e:	84 b1       	in	r24, 0x04	; 4
+	value |= (ADCH << 8);
+  80:	25 b1       	in	r18, 0x05	; 5
+
+	return value;
+  82:	90 e0       	ldi	r25, 0x00	; 0
+  84:	92 2b       	or	r25, r18
+  86:	08 95       	ret
+
+00000088 <main>:
+#include "Common_Macros.h"
+#include "ADC.h"
+
+int main(void)
+{
+	DDRD=0xFF;
+  88:	8f ef       	ldi	r24, 0xFF	; 255
+  8a:	81 bb       	out	0x11, r24	; 17
+	DDRC |= (1<<0);
+  8c:	a0 9a       	sbi	0x14, 0	; 20
+	DDRC |= (1<<1);
+  8e:	a1 9a       	sbi	0x14, 1	; 20
+	unsigned short value=0;	
+	ADC_vIntialize();
+  90:	0e 94 36 00 	call	0x6c	; 0x6c <ADC_vIntialize>
+    /* Replace with your application code */
+    while (1) 
+    {
+		value=ADC_u16Read();
+  94:	0e 94 3b 00 	call	0x76	; 0x76 <ADC_u16Read>
+		PORTD=value;
+  98:	82 bb       	out	0x12, r24	; 18
+		PORTC =(value>>8);//read Most Significant 2 bits
+  9a:	95 bb       	out	0x15, r25	; 21
+  9c:	fb cf       	rjmp	.-10     	; 0x94 <main+0xc>
+
+0000009e <_exit>:
+  9e:	f8 94       	cli
+
+000000a0 <__stop_program>:
+  a0:	ff cf       	rjmp	.-2      	; 0xa0 <__stop_program>

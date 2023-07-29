@@ -1,0 +1,280 @@
+
+DIO.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000001a2  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  000001f6  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  000001f6  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000228  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000068  00000000  00000000  00000264  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   0000083b  00000000  00000000  000002cc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 0000063d  00000000  00000000  00000b07  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000477  00000000  00000000  00001144  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000098  00000000  00000000  000015bc  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000003ee  00000000  00000000  00001654  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    0000025c  00000000  00000000  00001a42  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000048  00000000  00000000  00001c9e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 72 00 	jmp	0xe4	; 0xe4 <__ctors_end>
+   4:	0c 94 7c 00 	jmp	0xf8	; 0xf8 <__bad_interrupt>
+   8:	0c 94 7c 00 	jmp	0xf8	; 0xf8 <__bad_interrupt>
+   c:	0c 94 7c 00 	jmp	0xf8	; 0xf8 <__bad_interrupt>
+  10:	0c 94 7c 00 	jmp	0xf8	; 0xf8 <__bad_interrupt>
+  14:	0c 94 7c 00 	jmp	0xf8	; 0xf8 <__bad_interrupt>
+  18:	0c 94 7c 00 	jmp	0xf8	; 0xf8 <__bad_interrupt>
+  1c:	0c 94 7c 00 	jmp	0xf8	; 0xf8 <__bad_interrupt>
+  20:	0c 94 7c 00 	jmp	0xf8	; 0xf8 <__bad_interrupt>
+  24:	0c 94 7c 00 	jmp	0xf8	; 0xf8 <__bad_interrupt>
+  28:	0c 94 7c 00 	jmp	0xf8	; 0xf8 <__bad_interrupt>
+  2c:	0c 94 7c 00 	jmp	0xf8	; 0xf8 <__bad_interrupt>
+  30:	0c 94 7c 00 	jmp	0xf8	; 0xf8 <__bad_interrupt>
+  34:	0c 94 7c 00 	jmp	0xf8	; 0xf8 <__bad_interrupt>
+  38:	0c 94 7c 00 	jmp	0xf8	; 0xf8 <__bad_interrupt>
+  3c:	0c 94 7c 00 	jmp	0xf8	; 0xf8 <__bad_interrupt>
+  40:	0c 94 7c 00 	jmp	0xf8	; 0xf8 <__bad_interrupt>
+  44:	0c 94 7c 00 	jmp	0xf8	; 0xf8 <__bad_interrupt>
+  48:	0c 94 7c 00 	jmp	0xf8	; 0xf8 <__bad_interrupt>
+  4c:	0c 94 7c 00 	jmp	0xf8	; 0xf8 <__bad_interrupt>
+  50:	0c 94 7c 00 	jmp	0xf8	; 0xf8 <__bad_interrupt>
+  54:	89 00       	.word	0x0089	; ????
+  56:	8b 00       	.word	0x008b	; ????
+  58:	8d 00       	.word	0x008d	; ????
+  5a:	8f 00       	.word	0x008f	; ????
+  5c:	90 00       	.word	0x0090	; ????
+  5e:	90 00       	.word	0x0090	; ????
+  60:	90 00       	.word	0x0090	; ????
+  62:	90 00       	.word	0x0090	; ????
+  64:	90 00       	.word	0x0090	; ????
+  66:	90 00       	.word	0x0090	; ????
+  68:	90 00       	.word	0x0090	; ????
+  6a:	90 00       	.word	0x0090	; ????
+  6c:	90 00       	.word	0x0090	; ????
+  6e:	90 00       	.word	0x0090	; ????
+  70:	90 00       	.word	0x0090	; ????
+  72:	90 00       	.word	0x0090	; ????
+  74:	90 00       	.word	0x0090	; ????
+  76:	90 00       	.word	0x0090	; ????
+  78:	90 00       	.word	0x0090	; ????
+  7a:	90 00       	.word	0x0090	; ????
+  7c:	90 00       	.word	0x0090	; ????
+  7e:	90 00       	.word	0x0090	; ????
+  80:	90 00       	.word	0x0090	; ????
+  82:	90 00       	.word	0x0090	; ????
+  84:	90 00       	.word	0x0090	; ????
+  86:	90 00       	.word	0x0090	; ????
+  88:	90 00       	.word	0x0090	; ????
+  8a:	90 00       	.word	0x0090	; ????
+  8c:	90 00       	.word	0x0090	; ????
+  8e:	90 00       	.word	0x0090	; ????
+  90:	90 00       	.word	0x0090	; ????
+  92:	90 00       	.word	0x0090	; ????
+  94:	89 00       	.word	0x0089	; ????
+  96:	8b 00       	.word	0x008b	; ????
+  98:	8d 00       	.word	0x008d	; ????
+  9a:	8f 00       	.word	0x008f	; ????
+  9c:	9c 00       	.word	0x009c	; ????
+  9e:	a0 00       	.word	0x00a0	; ????
+  a0:	a4 00       	.word	0x00a4	; ????
+  a2:	a8 00       	.word	0x00a8	; ????
+  a4:	ab 00       	.word	0x00ab	; ????
+  a6:	ab 00       	.word	0x00ab	; ????
+  a8:	ab 00       	.word	0x00ab	; ????
+  aa:	ab 00       	.word	0x00ab	; ????
+  ac:	ab 00       	.word	0x00ab	; ????
+  ae:	ab 00       	.word	0x00ab	; ????
+  b0:	ab 00       	.word	0x00ab	; ????
+  b2:	ab 00       	.word	0x00ab	; ????
+  b4:	ab 00       	.word	0x00ab	; ????
+  b6:	ab 00       	.word	0x00ab	; ????
+  b8:	ab 00       	.word	0x00ab	; ????
+  ba:	ab 00       	.word	0x00ab	; ????
+  bc:	ab 00       	.word	0x00ab	; ????
+  be:	ab 00       	.word	0x00ab	; ????
+  c0:	ab 00       	.word	0x00ab	; ????
+  c2:	ab 00       	.word	0x00ab	; ????
+  c4:	ab 00       	.word	0x00ab	; ????
+  c6:	ab 00       	.word	0x00ab	; ????
+  c8:	ab 00       	.word	0x00ab	; ????
+  ca:	ab 00       	.word	0x00ab	; ????
+  cc:	ab 00       	.word	0x00ab	; ????
+  ce:	ab 00       	.word	0x00ab	; ????
+  d0:	ab 00       	.word	0x00ab	; ????
+  d2:	ab 00       	.word	0x00ab	; ????
+  d4:	ab 00       	.word	0x00ab	; ????
+  d6:	ab 00       	.word	0x00ab	; ????
+  d8:	ab 00       	.word	0x00ab	; ????
+  da:	ab 00       	.word	0x00ab	; ????
+  dc:	9c 00       	.word	0x009c	; ????
+  de:	a0 00       	.word	0x00a0	; ????
+  e0:	a4 00       	.word	0x00a4	; ????
+  e2:	a8 00       	.word	0x00a8	; ????
+
+000000e4 <__ctors_end>:
+  e4:	11 24       	eor	r1, r1
+  e6:	1f be       	out	0x3f, r1	; 63
+  e8:	cf e5       	ldi	r28, 0x5F	; 95
+  ea:	d8 e0       	ldi	r29, 0x08	; 8
+  ec:	de bf       	out	0x3e, r29	; 62
+  ee:	cd bf       	out	0x3d, r28	; 61
+  f0:	0e 94 ac 00 	call	0x158	; 0x158 <main>
+  f4:	0c 94 cf 00 	jmp	0x19e	; 0x19e <_exit>
+
+000000f8 <__bad_interrupt>:
+  f8:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000fc <DIO_vSetPortDir>:
+		PORTC = port_value;
+		break;
+
+	case 'd':
+	case 'D':
+		PORTD = port_value;
+  fc:	90 e0       	ldi	r25, 0x00	; 0
+  fe:	fc 01       	movw	r30, r24
+ 100:	e1 54       	subi	r30, 0x41	; 65
+ 102:	f1 09       	sbc	r31, r1
+ 104:	e4 32       	cpi	r30, 0x24	; 36
+ 106:	f1 05       	cpc	r31, r1
+ 108:	58 f4       	brcc	.+22     	; 0x120 <DIO_vSetPortDir+0x24>
+ 10a:	e6 5d       	subi	r30, 0xD6	; 214
+ 10c:	ff 4f       	sbci	r31, 0xFF	; 255
+ 10e:	0c 94 c9 00 	jmp	0x192	; 0x192 <__tablejump2__>
+ 112:	6a bb       	out	0x1a, r22	; 26
+ 114:	08 95       	ret
+ 116:	67 bb       	out	0x17, r22	; 23
+ 118:	08 95       	ret
+ 11a:	64 bb       	out	0x14, r22	; 20
+ 11c:	08 95       	ret
+ 11e:	61 bb       	out	0x11, r22	; 17
+ 120:	08 95       	ret
+
+00000122 <DIO_vTogglePort>:
+
+// Toggle Port
+
+void DIO_vTogglePort(unsigned char port_name)
+{
+	switch (port_name)
+ 122:	90 e0       	ldi	r25, 0x00	; 0
+ 124:	fc 01       	movw	r30, r24
+ 126:	e1 54       	subi	r30, 0x41	; 65
+ 128:	f1 09       	sbc	r31, r1
+ 12a:	e4 32       	cpi	r30, 0x24	; 36
+ 12c:	f1 05       	cpc	r31, r1
+ 12e:	98 f4       	brcc	.+38     	; 0x156 <DIO_vTogglePort+0x34>
+ 130:	e2 5b       	subi	r30, 0xB2	; 178
+ 132:	ff 4f       	sbci	r31, 0xFF	; 255
+ 134:	0c 94 c9 00 	jmp	0x192	; 0x192 <__tablejump2__>
+	{
+	case 'a':
+	case 'A':
+		PORTA = ~PORTA;
+ 138:	8b b3       	in	r24, 0x1b	; 27
+ 13a:	80 95       	com	r24
+ 13c:	8b bb       	out	0x1b, r24	; 27
+		break;
+ 13e:	08 95       	ret
+
+	case 'b':
+	case 'B':
+		PORTB = ~PORTB;
+ 140:	88 b3       	in	r24, 0x18	; 24
+ 142:	80 95       	com	r24
+ 144:	88 bb       	out	0x18, r24	; 24
+		break;
+ 146:	08 95       	ret
+
+	case 'c':
+	case 'C':
+		PORTC = ~PORTC;
+ 148:	85 b3       	in	r24, 0x15	; 21
+ 14a:	80 95       	com	r24
+ 14c:	85 bb       	out	0x15, r24	; 21
+		break;
+ 14e:	08 95       	ret
+
+	case 'd':
+	case 'D':
+		PORTD = ~PORTD;
+ 150:	82 b3       	in	r24, 0x12	; 18
+ 152:	80 95       	com	r24
+ 154:	82 bb       	out	0x12, r24	; 18
+ 156:	08 95       	ret
+
+00000158 <main>:
+int main(void)
+{
+    /* Replace with your application code */
+    //DIO_vSetPinDir('A', 0, 1);
+    //DIO_vSetPinDir('A', 1, 1);
+    DIO_vSetPortDir('A',0xff);
+ 158:	6f ef       	ldi	r22, 0xFF	; 255
+ 15a:	81 e4       	ldi	r24, 0x41	; 65
+ 15c:	0e 94 7e 00 	call	0xfc	; 0xfc <DIO_vSetPortDir>
+			DIO_vWritePinValue('a',i,0);
+			DIO_vWritePinValue('a',(6-i),0);
+		}
+		*/
+		
+		DIO_vTogglePort('a');
+ 160:	81 e6       	ldi	r24, 0x61	; 97
+ 162:	0e 94 91 00 	call	0x122	; 0x122 <DIO_vTogglePort>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 166:	2f ef       	ldi	r18, 0xFF	; 255
+ 168:	84 e3       	ldi	r24, 0x34	; 52
+ 16a:	9c e0       	ldi	r25, 0x0C	; 12
+ 16c:	21 50       	subi	r18, 0x01	; 1
+ 16e:	80 40       	sbci	r24, 0x00	; 0
+ 170:	90 40       	sbci	r25, 0x00	; 0
+ 172:	e1 f7       	brne	.-8      	; 0x16c <main+0x14>
+ 174:	00 c0       	rjmp	.+0      	; 0x176 <main+0x1e>
+ 176:	00 00       	nop
+		_delay_ms(500);
+		DIO_vTogglePort('a');
+ 178:	81 e6       	ldi	r24, 0x61	; 97
+ 17a:	0e 94 91 00 	call	0x122	; 0x122 <DIO_vTogglePort>
+ 17e:	2f ef       	ldi	r18, 0xFF	; 255
+ 180:	84 e3       	ldi	r24, 0x34	; 52
+ 182:	9c e0       	ldi	r25, 0x0C	; 12
+ 184:	21 50       	subi	r18, 0x01	; 1
+ 186:	80 40       	sbci	r24, 0x00	; 0
+ 188:	90 40       	sbci	r25, 0x00	; 0
+ 18a:	e1 f7       	brne	.-8      	; 0x184 <main+0x2c>
+ 18c:	00 c0       	rjmp	.+0      	; 0x18e <main+0x36>
+ 18e:	00 00       	nop
+ 190:	e7 cf       	rjmp	.-50     	; 0x160 <main+0x8>
+
+00000192 <__tablejump2__>:
+ 192:	ee 0f       	add	r30, r30
+ 194:	ff 1f       	adc	r31, r31
+ 196:	05 90       	lpm	r0, Z+
+ 198:	f4 91       	lpm	r31, Z
+ 19a:	e0 2d       	mov	r30, r0
+ 19c:	09 94       	ijmp
+
+0000019e <_exit>:
+ 19e:	f8 94       	cli
+
+000001a0 <__stop_program>:
+ 1a0:	ff cf       	rjmp	.-2      	; 0x1a0 <__stop_program>
